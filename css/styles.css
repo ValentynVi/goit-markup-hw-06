@@ -625,8 +625,7 @@ ul {
 }
 .subscribe-form {
 }
-.subscribe-label {
-  display: block;
+.subscribe-text {
   margin-bottom: 16px;
   font-weight: 500;
   color: #ffffff;
@@ -818,7 +817,7 @@ ul {
 
   transform: scale(1) translate(-50%, -50%);
 
-  padding: 0 24px 24px 24px;
+  padding: 72px 24px 24px 24px;
   width: 408px;
   min-height: 576px;
 
@@ -873,7 +872,6 @@ ul {
 
 .modal-title {
   display: block;
-  margin-top: 72px;
   margin-bottom: 16px;
   text-align: center;
   font-weight: 500;
@@ -899,6 +897,7 @@ ul {
   height: 40px;
   padding: 0;
   padding-left: 38px;
+  padding-right: 28px;
 
   border: 1px solid var(--form-border-color);
   outline: transparent;
@@ -926,6 +925,31 @@ ul {
 
   fill: var(--form-icon-color);
 }
+
+.form-info {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%) scale(0);
+  opacity: 0;
+  transition: opacity var(--anim-fast), fill var(--anim-fast),
+    transform var(--anim-fast);
+
+  fill: var(--form-icon-color);
+}
+
+.form-field:not(:placeholder-shown):focus:required:invalid ~ .form-info {
+  opacity: 1;
+  fill: rgb(219, 26, 26);
+  transform: translateY(-50%) scale(1);
+}
+
+.form-field:not(:placeholder-shown):focus:required:valid ~ .form-info {
+  opacity: 1;
+  fill: rgb(58, 189, 58);
+  transform: translateY(-50%) scale(1);
+}
+
 .form-comment {
   display: block;
   width: 100%;
@@ -973,9 +997,22 @@ ul {
   letter-spacing: 0.04em;
   color: var(--form-text-color);
 }
+
 .form-agreement-link {
   color: var(--secondary-accent-color);
 }
+
+.form-check-input ~ .form-custom-check {
+  outline: transparent;
+  outline-offset: -1px;
+  border-radius: 4px;
+  transition: outline var(--anim-fast);
+}
+
+.form-check-input:focus ~ .form-custom-check {
+  outline: 1px solid var(--secondary-accent-color);
+}
+
 .form-btn {
   padding: 16px 32px;
 
